@@ -58,3 +58,21 @@ variable sg_name {
 variable "ingress_rules" {
     type = list(string)
 }
+
+#ALB module variables
+
+variable alb_name {
+	type = string
+}
+
+variable public_instance_id {
+	type = string
+}
+
+variable security_group_ids {
+	type = list(string)
+}
+
+variable public_subnet {
+	type = list(string)
+}

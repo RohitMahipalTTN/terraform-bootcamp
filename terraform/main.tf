@@ -5,12 +5,11 @@ provider "aws" {
 terraform {
   backend "s3" {
     # Replace this with your bucket name!
-    bucket         = var.bucket
-    key            = var.key
-    region         = var.region
-    # Replace this with your DynamoDB table name!
-    dynamodb_table = var.dynamodb_table
-    encrypt        = var.encrypt
+    bucket         = "ttn-terrafrom-state"
+    key            = "global/s3/terraform.tfstate"
+    region ="us-east-1"
+    dynamodb_table = "terraform-up-and-running-locks"
+    encrypt        = true
   }
 }
 
@@ -42,3 +41,12 @@ module "security-group" {
   environment = var.environment
 }
 
+module "alb" {
+  source = "./modules/alb"
+  alb_name = var.alb_name
+  vpc_id = module.vpc.vpc_id
+  public_instance_id = module.ec2.public_instance_id
+  environment = var.environment
+  security_group_ids = [module.security-group.security_group_ids[*]]
+  public_subnet = [module.vpc.public_subnet[*]]
+}

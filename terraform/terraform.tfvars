@@ -13,3 +13,4 @@ instance_type = "t2.micro"
 instance_id = "i-0cdbe48490d424a38"
 sg_name = "ttn-test"
 ingress_rules = [22,80,5000]
+alb_name = "ttn-alb"
