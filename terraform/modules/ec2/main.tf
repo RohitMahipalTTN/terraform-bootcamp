@@ -1,7 +1,7 @@
 // CUSTOM AMI CREATION...
 resource "aws_ami_from_instance" "alpha_public_ami" {
   source_instance_id = var.instance_id
-  Name      = "${var.environment}-LEMP-Server AMI"
+  name      = "${var.environment}-LEMP-Server AMI"
   tags          = {
     Name      = "${var.environment}-LEMP-Server AMI"
     Use      = "Devops Bootcamp"
