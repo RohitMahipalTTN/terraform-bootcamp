@@ -25,6 +25,7 @@ module "security-group" {
   source = "./modules/security-group"
   sg_name = var.sg_name
   vpc_id = module.vpc.vpc_id
-  ingress_rules = var.sg_name
+  ingress_rules = var.ingress_rules
   network_interface_id = module.ec2.primary_network_interface_id
+  environment = var.environment
 }

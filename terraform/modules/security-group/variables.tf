@@ -15,3 +15,7 @@ variable "ingress_rules" {
 variable "network_interface_id" {
     type = string
 }
+
+variable environment {
+	type = string
+}
