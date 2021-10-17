@@ -2,6 +2,18 @@ provider "aws" {
    region = var.region
 }
 
+terraform {
+  backend "s3" {
+    # Replace this with your bucket name!
+    bucket         = "ttn-terrafrom-state"
+    key            = "global/s3/terraform.tfstate"
+    region         = "us-east-2"
+    # Replace this with your DynamoDB table name!
+    dynamodb_table = "terraform-up-and-running-locks"
+    encrypt        = true
+  }
+}
+
 module "vpc" {
   source = "./modules/vpc"
   availability_zones = var.availability_zones
@@ -29,3 +41,4 @@ module "security-group" {
   network_interface_id = module.ec2.primary_network_interface_id
   environment = var.environment
 }
+

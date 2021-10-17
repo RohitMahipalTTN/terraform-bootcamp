@@ -6,7 +6,7 @@ resource "aws_vpc" "alpha_vpc" {
 	enable_dns_hostnames = "true"
 	enable_classiclink = "false"
 	tags = {
-		Name = "${var.environment}-${var.vpc_name}"
+		name = "${var.environment}-${var.vpc_name}"
 	}
 }
 
@@ -14,7 +14,7 @@ resource "aws_vpc" "alpha_vpc" {
 resource "aws_internet_gateway" "alpha_vpc_igw" {
 	vpc_id = aws_vpc.alpha_vpc.id
 	tags = {
-		Name = "${var.environment}-ss_igw"
+		name = "${var.environment}-ss_igw"
 	}
 }
 
@@ -39,7 +39,7 @@ resource "aws_route_table" "public_RT" {
 		gateway_id = aws_internet_gateway.alpha_vpc_igw.id
 	}
 	tags = {
-		Name = "${var.environment}-public_RT"
+		name = "${var.environment}-public_RT"
 	}
 }
 
