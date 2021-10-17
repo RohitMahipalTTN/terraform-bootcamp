@@ -10,23 +10,6 @@ resource "aws_vpc" "alpha_vpc" {
 	}
 }
 
-
-
-
-# Public Subnets
-resource "aws_subnet" "public_1a" {
-	vpc_id = aws_vpc.alpha_vpc.id
-	cidr_block = var.public_subnet
-	map_public_ip_on_launch = "true"
-	availability_zone = var.ava_zone_1
-	tags = {
-		Name = "public-subnet"
-	}
-}
-
-
-
-
 # Internet Gateway 
 resource "aws_internet_gateway" "alpha_vpc_igw" {
 	vpc_id = aws_vpc.alpha_vpc.id
@@ -34,6 +17,25 @@ resource "aws_internet_gateway" "alpha_vpc_igw" {
 		Name = "ss_igw"
 	}
 }
+
+
+# Public Subnets
+resource "aws_subnet" "public_1a" {
+	vpc_id = aws_vpc.alpha_vpc.id
+	count = length(var.public_subnets_cidr)
+	cidr_block = element(var.public_subnets_cidr,   count.index)
+	map_public_ip_on_launch = "true"
+	availability_zone = element(var.availability_zones,   count.index)
+	tags = {
+    	Name        = "${var.environment}-${element(var.availability_zones, count.index)}-      public-subnet"
+    	Environment = "${var.environment}"
+  }
+}
+
+
+
+
+
 
 #Public Route Table
 resource "aws_route_table" "public_RT" {
@@ -49,7 +51,8 @@ resource "aws_route_table" "public_RT" {
 
 #Public Subnet Associations
 resource "aws_route_table_association" "public_assoc1" {
-	subnet_id = aws_subnet.public_1a.id
+	count = length(var.public_subnets_cidr)
+	subnet_id = element(aws_subnet.public_subnet.*.id, count.index)
 	route_table_id = aws_route_table.public_RT.id
 }
 

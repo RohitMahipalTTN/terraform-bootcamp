@@ -2,11 +2,11 @@
 variable region {
 	type = string
 }
-variable ava_zone_1 {
-	type = string
+variable availability_zones {
+	type = list(string)
 }
-variable public_subnet {
-	type = string
+variable public_subnets_cidr {
+	type = list(string)
 }
 variable vpc_name {
 	type = string
