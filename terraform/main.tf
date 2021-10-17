@@ -8,4 +8,5 @@ module "vpc" {
   region = var.region
   public_subnets_cidr = var.public_subnets_cidr
   vpc_name = var.vpc_name
+  Environment = var.environment
 }
