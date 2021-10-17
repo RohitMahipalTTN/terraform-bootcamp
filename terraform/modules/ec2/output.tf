@@ -1,4 +1,4 @@
-output "public_id" {
+output "public_instance_id" {
 description = "ID of Public instances"
   value       = aws_instance.alpha_public_instance.id
 }
