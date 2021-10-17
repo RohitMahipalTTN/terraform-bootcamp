@@ -12,10 +12,12 @@ variable environment {
 
 variable security_group_ids {
 	type = list(string)
+	default     = []
 }
 
 variable public_subnet {
 	type = list(string)
+	default     = []
 }
 
 variable alb_name {
