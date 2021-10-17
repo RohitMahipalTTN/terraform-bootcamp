@@ -18,9 +18,8 @@ resource "aws_internet_gateway" "alpha_vpc_igw" {
 	}
 }
 
-
 # Public Subnets
-resource "aws_subnet" "public_1a" {
+resource "aws_subnet" "public_subnet" {
 	vpc_id = aws_vpc.alpha_vpc.id
 	count = length(var.public_subnets_cidr)
 	cidr_block = element(var.public_subnets_cidr,   count.index)
@@ -31,11 +30,6 @@ resource "aws_subnet" "public_1a" {
     	Environment = "${var.environment}"
   }
 }
-
-
-
-
-
 
 #Public Route Table
 resource "aws_route_table" "public_RT" {
