@@ -19,3 +19,7 @@ variable public_subnet_id {
 variable instance_id {
 	type = string
 }
+
+variable environment {
+	type = string
+}

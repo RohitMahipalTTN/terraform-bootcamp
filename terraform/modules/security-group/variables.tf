@@ -12,6 +12,6 @@ variable "ingress_rules" {
     type = list(string)
 }
 
-variable "primary_network_interface_id" {
+variable "network_interface_id" {
     type = string
 }

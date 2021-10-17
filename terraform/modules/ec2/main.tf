@@ -2,7 +2,7 @@
 resource "aws_ami_from_instance" "alpha_public_ami" {
   source_instance_id = var.instance_id
   tags          = {
-    Name      = "LEMP-Server AMI"
+    Name      = "${var.environment}-LEMP-Server AMI"
     Use      = "Devops Bootcamp"
   }
 }
@@ -16,7 +16,7 @@ resource "aws_instance" "alpha_public_instance" {
   associate_public_ip_address = true
   disable_api_termination = var.disable_api_termination
   tags          = {
-    Name      = "Lemp-Server"
+    Name      = "${var.environment}-Lemp-Server"
     Use      = "Devops Bootcamp"
   }
 }

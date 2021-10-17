@@ -1,5 +1,5 @@
 resource "aws_security_group" "alpha_sg" {
-  name        = var.sg_name
+  name        = "${var.environment}-${var.sg_name}"
   description = "Security group for example usage with EC2 instance"
   vpc_id      = var.vpc_id
 }
@@ -25,8 +25,7 @@ resource "aws_security_group_rule" "allow_all" {
 }
 
 resource "aws_network_interface_sg_attachment" "sg_public_attachment" {
-  count = var.number
   security_group_id    = aws_security_group.alpha_sg.id
-  network_interface_id = var.primary_network_interface_id
+  network_interface_id = var.network_interface_id
 }
 
