@@ -1,3 +1,17 @@
+#Terrafrom variables
+variable bucket {
+	type = string
+}
+variable key {
+	type = string
+}
+variable dynamodb_table {
+	type = string
+}
+variable encrypt {
+	type = string
+}
+
 #VPC module variables
 
 variable region {

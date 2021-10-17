@@ -5,12 +5,12 @@ provider "aws" {
 terraform {
   backend "s3" {
     # Replace this with your bucket name!
-    bucket         = "ttn-terrafrom-state"
-    key            = "global/s3/terraform.tfstate"
-    region         = "us-east-2"
+    bucket         = var.bucket
+    key            = var.key
+    region         = var.region
     # Replace this with your DynamoDB table name!
-    dynamodb_table = "terraform-up-and-running-locks"
-    encrypt        = true
+    dynamodb_table = var.dynamodb_table
+    encrypt        = var.encrypt
   }
 }
 
