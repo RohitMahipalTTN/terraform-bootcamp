@@ -48,5 +48,5 @@ module "alb" {
   public_instance_id = module.ec2.public_instance_id
   environment = var.environment
   security_group_ids = [module.security-group.security_group_ids]
-  public_subnet = [module.vpc.public_subnet]
+  public_subnets = [module.vpc.public_subnet[0] , module.vpc.public_subnet[1] ]
 }

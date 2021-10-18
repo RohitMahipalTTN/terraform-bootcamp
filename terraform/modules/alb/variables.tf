@@ -15,7 +15,7 @@ variable security_group_ids {
 	default     = []
 }
 
-variable public_subnet {
+variable public_subnets {
 	type = list(string)
 	default     = []
 }

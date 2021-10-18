@@ -16,7 +16,7 @@ resource "aws_lb" "alpha_alb" {
  internal           = false
  load_balancer_type = "application"
  security_groups    = var.security_group_ids
- subnets            = var.public_subnet
+ subnets            = var.public_subnets
 
  tags = {
    environment = "${var.environment}"
