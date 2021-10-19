@@ -1,0 +1,6 @@
+key_name = "rohitTTN"
+ami = "ami-09e67e426f25ce0d7"
+disable_api_termination = "false"
+instance_type = "t2.micro"
+public_subnet_id = "subnet-08b817d908512ed05"
+environment = "Bootcamp-TTN"
